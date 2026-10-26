@@ -98,20 +98,18 @@
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButton = document.getElementById('themeToggle');
-            
-            toggleButton.addEventListener('click', () => {
-                // Check current theme attribute status
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                
-                if (currentTheme === 'dark') {
-                    document.documentElement.removeAttribute('data-theme');
-                    toggleButton.textContent = 'Toggle Dark Mode';
+        $(function () {
+            $('#themeToggle').on('click', function () {
+                const isDark = $('html').attr('data-theme') === 'dark';
+
+                if (isDark) {
+                    $('html').removeAttr('data-theme');
+                    $(this).text('Toggle Dark Mode');
                 } else {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    toggleButton.textContent = 'Toggle Light Mode';
+                    $('html').attr('data-theme', 'dark');
+                    $(this).text('Toggle Light Mode');
                 }
             });
         });
